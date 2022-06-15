@@ -627,7 +627,7 @@
 59450 rem
 60000 REM -combattimento-
 60005 rem
-60008 fo=120:ab=120
+60008 rem fo=120:ab=120
 60009 rem
 60010 PRINT"{down}{green}la sua forza e' di{.*5}{blue}";:GOSUB29990:PRINTfz;"{green}"
 60020 PRINT"e ha{.*3}{blue}";:GOSUB29990
