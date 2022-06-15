@@ -234,15 +234,16 @@
 10770 PRINT"4)una mazza ferrata(150 zecchini)":PRINT"{reverse on}7 punti d'abilita'"
 10780 PRINT"5)una spada di platino(350 zecchini)":PRINT"{reverse on}20 punti d'abilita'"
 10790 PRINT"6)grazie torno fra poco!"
-10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>5THEN10510
-10805 IFx=0andze>1000THENs=ze-500:ad=1:a=25
-10810 IFx=1andze>300 THENs=ze-300:a=17
-10820 IFx=2andze>200 THENs=ze-200:a=10
-10830 IFx=3andze>250 THENs=ze-250:a=15
-10840 IFx=4andze>150 THENs=ze-150:a=7
-10850 IFx=5andze>350 THENs=ze-350:a=20
+10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>5THEN10720
+10805 IFx=0THENs=ze-500:a=25
+10810 IFx=1THENs=ze-300:a=17
+10820 IFx=2THENs=ze-200:a=10
+10830 IFx=3THENs=ze-250:a=15
+10840 IFx=4THENs=ze-150:a=7
+10850 IFx=5THENs=ze-350:a=20
 10860 IFs<0THENGOSUB11120:GOTO10510
 10870 GOSUB11130:ze=s:ab=ab+a
+10875 IFx=0THENad=1
 10880 IFx=1THENsp=1
 10890 IFx=3THENas=1
 10895 IFx=4THENmz=1
@@ -264,8 +265,8 @@
 11080 IFx=3THENs=ze-110:w=20
 11090 IFs<0THENGOSUB11120:GOTO10510
 11100 GOSUB11130:ze=s:ft=ft+w:GOTO10510
-11120 PRINT"non hai abbastanza soldi":GOSUB29000:RETURN
-11130 PRINT"bene,hai fatto un buon acquisto!":GOSUB29000:RETURN
+11120 PRINT"{clear}non hai abbastanza soldi":GOSUB29000:RETURN
+11130 PRINT"{clear}bene,hai fatto un buon acquisto!":GOSUB29000:RETURN
 11140 rem
 11150 REM -unno-
 11155 rem
@@ -627,7 +628,7 @@
 59450 rem
 60000 REM -combattimento-
 60005 rem
-60008 rem fo=120:ab=120
+60008 rem fo=120:ab=120:rem debug
 60009 rem
 60010 PRINT"{down}{green}la sua forza e' di{.*5}{blue}";:GOSUB29990:PRINTfz;"{green}"
 60020 PRINT"e ha{.*3}{blue}";:GOSUB29990
