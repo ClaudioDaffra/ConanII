@@ -90,8 +90,11 @@
 2000 PRINT"{up}{reverse on}{right}{black}{space*10}{light gray}{space*11}{black}{space*4}{gray}{space*7}{black}{space*2}{gray}{space*5}"
 2010 PRINT"{white}sei entrato in tyro.a destra vedi una taverna e ci entri."
 2020 GOSUB29000:POKEyw,2:POKEwy,7:
+2025 rem
+2028 rem tyro missioni
+2029 rem
 2030 PRINT"{black}";co$;",mentre mangi ascolti e senti{.*6}":GOSUB29990
-2040 PRINT"{white}1)un tirannosauro terrorizza la popolazione della cimeria orientale.";
+2040 PRINT"{black}1)un tirannosauro terrorizza la popolazione della cimeria orientale.";
 2050 PRINT"sono offerti 50 zecchini a chi lo uccidera'."
 2060 PRINT"2)un alchimista ne paghera' 100 a chi gli procurera'le radici dell'";
 2070 PRINT"albero della vita che cresce nella foresta dei trolls."
@@ -100,8 +103,17 @@
 2093 INPUTq:PRINT"{clear}"
 2095 IFq=5THENGOSUB30170:GOTO2030
 2097 POKEyw,1:POKEwy,6:PRINTco$;",parti e buona fortuna!"
-3000 ONqGOTO3010,5000,8020,30500
+3000 rem ONqGOTO3010,5000,8020,30500
+3001 ifq=5THENGOSUB30170:GOTO2030:rem situazione
+3002 ifq=4THENreturn:rem ritorno
+3003 ifq=2THENgosub5000:rem alchimista
+3004 ifq=3THENgosub8020:rem conte yul
+3005 ifq=1THENgosub3010:rem tiranno sauro
+3006 rem
+3008 goto 2030 : rem tyro missioni
+3009 rem
 3010 REM -tirann-
+3015 rem
 3020 pe=6:di=4:GOSUB30780
 3030 PRINT"{clear}":POKEyw,14
 3040 PRINTSPC(12)"{reverse on}{white}il tirannosauro"
@@ -117,8 +129,11 @@
 4080 no=1:nm$="tirannosauro":cm=50:fz=70:GOSUB60000:ze=ze+50:ab=ab+5:fo=fo+10
 4085 no=0
 4090 PRINT"ottimo lavoro!ora riposati per riprendere forza."
-4100 GOSUB29000:GOTO30500
+4100 GOSUB29000
+4105 return
+4110 rem
 5000 REM -trolls-
+5005 rem
 5010 pe=6:di=4:GOSUB30780
 5020 PRINT"{clear}":POKEwy,1:POKEyw,0
 5030 PRINTSPC(10)"{reverse on}{white}la foresta dei trolls"
@@ -140,8 +155,11 @@
 7080 ze=ze+100:ab=ab+5:fo=fo+20:no=0
 7090 PRINT"{clear}{white}ecco l'albero della vita!prendilo e riposati.":GOSUB29000:GOTO30500
 8000 PRINT"{down}{white}";co$;"!difenditi":GOSUB29000:POKE53281,1
-8010 no=1:nm$="troll":cm=40:fz=30:GOSUB60000:POKE53281,0:POKE53280,0:RETURN
+8010 no=1:nm$="troll":cm=40:fz=30:GOSUB60000:POKE53281,0:POKE53280,0
+8012 return
+8015 rem
 8020 REM-castello-
+8025 rem
 8030 pe=4:di=2:GOSUB30780
 8040 PRINT"{clear}":POKEyw,4
 8050 PRINTSPC(15)"{reverse on}{white}il castello{down*4}"
@@ -157,8 +175,11 @@
 9060 POKEyw,1:FORg=1TO3:PRINT"{green}coraggio ";co$;" parti!"
 9070 PRINT"{reverse on}{yellow}giornata numero ";g:di=g:pe=3:GOSUB30780:PRINT"{clear}":NEXT
 9080 PRINT"hai lavorato bene!{right}ora prendi la paga e torna a casa!"
-9090 GOSUB29000:GOTO30500
+9090 GOSUB29000
+9095 return
+9100 rem
 10000 REM -arya-
+10005 rem
 10010 GOSUB30720
 10020 PRINTSPC(10)"{white}{reverse on}in viaggio verso arya":pe=6:di=4
 10030 PRINT"{down}{black}sta andando tutto bene!non c'e' nessuno.":GOSUB29000:GOSUB30780
@@ -175,7 +196,9 @@
 10230 PRINT" situazione,4 per tornare a casa.":INPUTx:PRINT"{clear}"
 10240 IFx>4THENGOSUB30170:GOTO10160
 10250 ONxGOTO10270,11150,11330,30500
+10260 rem
 10270 REM -ormuz-
+10280 rem
 10380 POKEyw,7:PRINT"{home}":FORt=1TO280:PRINT"{reverse on}{light blue} ";:NEXT
 10390 PRINT"{home}per arrivare ad ormuz bisogna attraversare il deserto{.*4}"
 10400 GOSUB29000:di=4:pe=6:GOSUB30780
@@ -204,15 +227,15 @@
 10710 GOSUB11130:ze=s:fo=fo+f:GOTO10510
 10720 PRINT"{white}{reverse on}il laboratorio dell'alchimista"
 10730 PRINT"{black}{down}ora scegli cosa comprare{.*9}"
-10735 PRINT"{yellow}{down*2}0)un'ammazza draghi (1000 zecchini)"
+10735 PRINT"{yellow}{down*2}0)un'ammazza draghi(500)":PRINT"{reverse on}25 punti d'abilita'"
 10740 PRINT"una spada d'argento(300 zecchini)":PRINT"{reverse on}17 punti d'abilita'"
 10750 PRINT"2)uno scudo d'oro(200 zecchini)":PRINT"{reverse on}10 punti d'abilita'"
 10760 PRINT"3)un'ascia incantata(250 zecchini)":PRINT"{reverse on}15 punti d'abilita'"
 10770 PRINT"4)una mazza ferrata(150 zecchini)":PRINT"{reverse on}7 punti d'abilita'"
 10780 PRINT"5)una spada di platino(350 zecchini)":PRINT"{reverse on}20 punti d'abilita'"
 10790 PRINT"6)grazie torno fra poco!"
-10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>5ORx=0THEN10510
-10805 IFx=0andze>1000THENs=ze-1000:ad=1
+10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>5THEN10510
+10805 IFx=0andze>1000THENs=ze-500:ad=1:a=25
 10810 IFx=1andze>300 THENs=ze-300:a=17
 10820 IFx=2andze>200 THENs=ze-200:a=10
 10830 IFx=3andze>250 THENs=ze-250:a=15
@@ -243,7 +266,9 @@
 11100 GOSUB11130:ze=s:ft=ft+w:GOTO10510
 11120 PRINT"non hai abbastanza soldi":GOSUB29000:RETURN
 11130 PRINT"bene,hai fatto un buon acquisto!":GOSUB29000:RETURN
+11140 rem
 11150 REM -unno-
+11155 rem
 11160 PRINT"{down*2}{black}vai ";co$;" e uccidi l'unno!":GOSUB29000
 11170 pe=2:di=2:GOSUB30780:POKEyw,2
 11180 PRINT"{clear}{down}{white}sei arrivato!york e'davanti a te!ha capito che sei venuto per";
@@ -293,7 +318,9 @@
 11505 GOTO11520
 11510 PRINT"{clear}{white}hai tentato di imbrogliarmi!percio'{.*3}":GOSUB29000:GOTO29500
 11520 GOSUB29000:GOTO30500
+11530 rem
 20000 REM -montagna-
+20005 rem
 20010 POKEyw,0:PRINT"{clear}{white}{reverse on}in viaggio verso la montagna"
 20020 PRINT"{down}{white}ora dovrai arrivare alla porta di roccia"
 20030 GOSUB29000:pe=4:di=3:GOSUB30780
@@ -476,24 +503,23 @@
 30540 PRINT"5)andare alla torre magica"
 30550 PRINT"6)vedere la mappa della cimeria"
 30560 PRINT"{down*4}{black}rispondi con un numero e premi return":INPUT n
-30565 IFn<>1ANDn<>6THEN30590
-30570 IFn=1THENGOSUB30170
-30575 IFn=6THENGOSUB30900
-30580 GOTO30500
-30590 IFn<>3ANDn<>5THEN30560
-30600 IFfo>60THENPRINT"{clear}{black}penso anch'io che sia tempo che tu parta":GOSUB30000
-30610 IFfo<60THENPRINT"{clear}{black}{down}ripensaci ";co$;"!sei ancora molto debole!":GOSUB30670
+30565 rem
+30570 goto 30647
+30580 rem
+30600 IFn=4andfo>60THENPRINT"{clear}{black}penso anch'io che sia tempo che tu parta":GOSUB30000
+30610 IFn=4andfo<60THENPRINT"{clear}{black}{down}ripensaci ";co$;"!sei ancora molto debole!":GOSUB30670
 30620 PRINT"{yellow}{reverse on}{down*4}{right*3}sei proprio deciso a partire?(s/n)"
-30630 GETq$:IFq$=""THEN30630
-30640 IFq$="n"THEN30500
-30645 IFq$<>"s"THEN30620
-30647 ifn=0THENPRINT" < scelta 1-6 > "
-30648 ifn=1THEN30170:rem situazione
-30649 ifn=2THEN1000:rem tyro
-30651 ifn=3THEN20000:rem montagna luminosa
-30652 ifn=4THEN10000:rem arya
-30653 ifn=5THEN59000:rem torre magica
-30654 ifn=6THEN30900:rem mappa cimmeria
+30630 GETq$:IFq$=""andq$<>"s"andq$<>"n"THEN30630
+30640 rem
+30645 IFq$="s"THENgosub59000:
+30646 goto 30500
+30647 ifn=0THENPRINT" < scelta 1-6 > ":goto30500
+30648 ifn=1THENgosub30170:rem situazione
+30649 ifn=2THENgosub1000:rem tyro
+30651 ifn=3THENgosub20000:rem montagna luminosa
+30652 ifn=4THENgosub10000:rem arya
+30653 ifn=5THENgoto 30600 : rem torre magica
+30654 ifn=6THENgosub30900:rem mappa cimmeria
 30655 GOTO 30500 : rem ONnGOTO1,1000,20000,10000,15000
 30670 REM-teschio-
 30675 PRINTSPC(15)"{white}{reverse on}{down*3}{sh pound}{space*8}{cm asterisk}":PRINTSPC(15)"{reverse on}{space*10}"
@@ -542,6 +568,7 @@
 39990 GOSUB29000:RETURN
 39999 END
 40000 REM -avversario-
+40005 rem
 40010 RESTORE
 40020 qu=INT(RND(0)*50)+1:FORk=1TOqu:READnm$,fz,cm:NEXT
 40030 fb=INT(fz/10)*3:PRINT"{black}attento ";co$;:PRINT"!"
@@ -597,8 +624,11 @@
 59420 PRINT" del male!non conosce pero' l'ultima lettera!":GOSUB29990
 59430 PRINT"{yellow}{down}esse sono{.*4}{white}{reverse on}";:FORk=1TO3:PRINTno$(k);:NEXT:PRINT
 59440 fo=fo+10:PRINT"{down*2}{reverse off}{white}ora vai ";co$;"!":GOSUB29000:GOTO30500
+59450 rem
 60000 REM -combattimento-
 60005 rem
+60008 fo=120:ab=120
+60009 rem
 60010 PRINT"{down}{green}la sua forza e' di{.*5}{blue}";:GOSUB29990:PRINTfz;"{green}"
 60020 PRINT"e ha{.*3}{blue}";:GOSUB29990
 60030 PRINTcm;"{green}{right}in abilita' di combattimento":GOTO60100
@@ -623,7 +653,9 @@
 60185 INPUT e:PRINT"{clear}":POKEwy,2
 60187 IFe=5THENGOSUB30170:GOTO60160
 60190 ONeGOTO60200,60300,60400,60500
+60192 rem
 60195 REM info guerriero vs conan
+60198 rem
 60200 PRINT"{clear}{reverse on}{red}";nm$
 60201 PRINT"{blue}{right*5}forza=";fz;"{right*2}abilita'=";cm:GOSUB27000
 60202 PRINT"{reverse on}{red}";co$;"{reverse off}"
