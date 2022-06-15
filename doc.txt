@@ -1,0 +1,137 @@
+
+Conan 2.0
+
+modifiche versione 1.0
+
+1) aggiunta Bonus : Attacco(at) Difesa(df) e Danno(dn)
+
+62 at=0:df=0:dn=0: rem bonus attacco difesa e danno
+
+30180 : situazione personaggio
+30205 : at df dn
+
+2) eliminazione penalità per fuga
+
+60400 PRINT"{clear}{reverse on}{red}";co$;"{reverse off}{blue},abbandoni lo scontro !"
+60410 q=INT(RND(1)*(30+ft)):PRINT"{down}{black}il tuo avversario ti corre dietro.."
+
+3) situazione combattimento in relazione alla forza attuale
+
+60100 IF(fz-fo)>30THENPRINT"{down}{red}e' un avversario duro da uccidere!"
+60105 IF(cm-ab)>35THENPRINT"{down}{blue}attento!e' un ottimo combattente!"
+60110 IF(fz-fo)=<20AND(cm-ab)<25THENPRINT"{down}{yellow}questi non e' di certo un pericolo!"
+60115 if(fo<15)THENprint"{down}{reverse on}{red}" SEI MOLTO DEBOLE {reverse off}{red}"
+
+4) allineamento statistiche conan vs guerriero
+
+60195 REM info guerriero vs conan
+60200 PRINT"{clear}{reverse on}{red}";nm$;"{blue}{right*2}forza=";fz;"{right*2}abilita'=";cm:GOSUB27000
+60201 PRINT"{reverse on}{red}";co$;"{blue}{right*5}forza=";fo;"{right*2}abilita'=";ab;"{down}"
+60205 PRINTco$;"{green} ti lanci contro il tuo avversario e lo colpisci!!":GOSUB29990
+
+5) se nel viaggio non incontra nessuna ripristina forze e abilità
+
+30850 PRINT"{down}{red}avanti.sei ancora vivo!":PRINT"non c'e' nessuno in vista!"
+30855 zz=INT(RND(1)*(6)) : fo=fo+zz : rem ripristino forza
+30858 rem
+30860 PRINT"ripristino in forza  (";zz;")"
+30865 zz=INT(RND(1)*(3)) : : ab=ab+zz :rem ripristino abilità
+30866 rem
+30868 PRINT"ripristino in abilità(";zz;")"
+
+6) nel combattimento si perde forza e abilità ora
+
+60260 IFp>cmTHENPRINT"ma tu schivi il colpo!":GOTO60280
+60262 PRINT"ti ha ferito!stai sanguinando!":PRINT"hai subito{.*5}{yellow}":GOSUB29990
+60265 r=INT(RND(1)*(cm+fo))+1:IFr>cmTHENPRINT"{.*3}una ferita!":fo=fo-3:ab=ab-1
+60267 IFr<cm/3THENPRINT"{.*3}tre ferite!":fo=fo-10:ab=ab-3:GOTO60270
+60268 IFr<cmORr=cmTHENPRINT"{.*3}due ferite!":fo=fo-5:ab=ab-2
+
+7) 60195 REM info guerriero vs conan
+
+   ora nel calcolo attacco difesa intervengono at df dn
+
+   conan attacco        : p=INT(RND(1)*((ab+at)+cm))+1
+ 
+   conan fa danno       : r=INT(RND(1)*((ab+at)+fz))+1
+
+   conan difesa         : p=INT(RND(1)*(cm+(ab+at)))+1:qc=qc+1
+
+   conan subisce danno  : fo=fo-?/df
+
+
+8) modifica punteggi mostri 
+
+40100 DATAdinosauro,60,20,stregone,20,23,azteco,25,25,samurai,20,55
+40110 DATAgorilla,40,30,lottatore,28,45,gladiatore,45,45
+40120 DATAippogrifo,12,26,vichingo,33,34,mago,10,20
+40130 DATAhobbit,5,5,guerriero,27,43,soldato,28,29
+40140 DATAcentauro,25,36,gnomo,9,23,cavaliere nero,35,56
+40150 DATAfolletto,18,21,barbaro,36,43,mercenario,15,29
+40160 DATAstrano skrull,30,30,ciclope,60,60,mostro alato,50,70
+40170 DATAgoblin,37,44,satiro,20,29,grifone,37,46
+40180 DATAtitano,50,60,serpente alato,50,30,gigante,70,30
+40190 DATAsauriano,39,32,minotauro,34,56,dragone,70,70
+40200 DATApterodattilo,37,25,demonio,39,20,cannibale,47,27
+40210 DATAmammouth,60,36,ragno gigante,18,45,predone,23,29
+40220 DATAunicorno,31,12,zombi,37,41,orco,55,35
+40230 DATAuomo-lupo,28,34,indemoniato,13,25,kraken,60,60
+40240 DATAtritone,22,33,enorme scorpione,27,40,diavolo,26,24
+40250 DATAiguana,18,20,cobra dorato,23,29,varano,28,13,anaconda,12,21
+
+9) fix esperienza
+
+60620 a1=(INT(za/10)*2)+1:ab=ab+a1
+60622 a2=(INT(zf/10)*2)+1:fo=fo+a2
+
+
+10) ridotti i giorni di viaggio e i pericoli
+
+11) aumentato l'abilità dei mostri in combattimento
+
+12) migliorato bottino di guerra
+
+29610 IFw=1THENPRINT"uno scudo per aumentare la tua forza":fo=fo+10
+29620 IFw=2THENPRINT"una pozione che dona nuova forza":fo=fo+15
+29630 IFw=3THENPRINT"una spada per aumentare l'abilita'":ab=ab+10
+29640 IFw=4THENPRINT"un talismano che dona fortuna":ft=ft+5
+29650 IFw=5THENPRINT"un amuleto portafortuna":ft=ft+3
+29651 IFw=6THENPRINT"una pergmanena che dona attacco":at=at+(int(rnd(1)*4)+1)
+29652 IFw=7THENPRINT"uno anello che dona difesa":df=df+(int(rnd(1)*2)+1)
+29654 IFw=8THENPRINT"uno anello che riduce i danni":dn=dn+1
+29655 IFw>8THENPRINT"un sacchetto con ";t;"{left} zecchini d'oro":ze=ze+t
+29656 if(at>13)THENat=13
+29657 if(df>7)THENdf=7
+29658 if(dn>3)THENdn=3
+
+
+13) fix avvertimenti al combattimento
+
+60100 IF(fz-fo)>10THENPRINT"{down}{red}e' un avversario duro da uccidere!"
+60105 IF(cm-ab)>5THENPRINT"{down}{blue}attento!e' un ottimo combattente!"
+60110 IF(fz-fo)=<10AND(cm-ab)<15THENPRINT"{down}{yellow}questi non e' di certo un pericolo!"
+60115 if(fo<15)THENprint"{down}{reverse on}{red}" SEI MOLTO DEBOLE {reverse off}{red}"
+60125 zf=fz:za=cm:rem salva punteggi iniziali
+
+
+14) se incontra e sconfigge avversario più, forte , lascerà per terra una lettera
+    la quarta del nome del sig.del male.
+
+15) xx il dragone compare una sola volta
+
+16) aggiunta l'ammazza draghi come spada
+
+17) diceria veggente per la quarta lettera incontro
+
+18) aumentata forza tiranno sauro ( BOSS )
+
+19) bug fix 
+
+30647 ifn=0THENPRINT" < scelta 1-6 > "
+30648 ifn=1THEN30170:rem situazione
+30659 ifn=2THEN1000:rem tyro
+30651 ifn=3THEN20000:rem montagna luminosa
+30652 ifn=4THEN10000:rem arya
+30653 ifn=5THEN15000:rem torre magica
+30654 ifn=6THEN30900:rem mappa cimmeria
+30655 GOTO 30500 : rem ONnGOTO1,1000,20000,10000,15000
