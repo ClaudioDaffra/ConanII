@@ -11,7 +11,7 @@
 45 rem
 50 DIMno$(4)
 60 fo=50:ze=30:ab=45:ft=28:as=0:co$="conan":mz=0:no=0:sp=0:sc=0:pl=0:am=0
-62 at=1:df=1:dn=1:xx=0: rem bonus attacco difesa e danno
+62 at=1:df=1:dn=1:xx=0:ve=0:rem bonus attacco difesa e danno
 65 rem
 70 wy=53280:yw=53281
 90 REM -titolo-
@@ -32,7 +32,7 @@
 200 a=55776:FORk=1504TO1543:POKEk,98:POKEa,7:a=a+1:NEXT
 205 REM-schermata di apertura-
 207 PRINT"{clear}{home}":POKEyw,1:POKEwy,7
-210 PRINT"{black}{down}{right*5}O{cm y*14}P{cm y*15}P"
+210 PRINT"{black}{down}{right*5}"+chr$(111)+"{cm y*14}"+chr$(112)+"{cm y*15}"+chr$(112)
 220 PRINT"{right*5}{cm h}{right*14}{cm m}{right*15}{cm n}"
 230 PRINT"{right*5}{cm h}{reverse on}{blue}{right}c{reverse off}{black}hiunque tu{right*2}{cm m}{right*2}gioso,se pen{right}{cm n}"
 240 PRINT"{right*5}{cm h}{right}sia prepara-{right}{cm m}{right*2}si di potere{right}{cm n}"
@@ -44,7 +44,7 @@
 300 PRINT"{right*5}{cm h}{right}cere{!*3}{right*6}{cm m}{right*2}sarai chiama{right}{cm n}"
 310 PRINT"{right*5}{cm h}{blue}{reverse on}{right}s{reverse off}{black}e sei corag{right}{cm m}{right*2}to{.*4}conan!{right}{cm m}"
 320 PRINT"{right*5}{cm h}{right*14}{cm m}{right*15}{cm n}"
-330 PRINT"{right*5}L{cm p*14}{sh @}{cm p*15}{sh @}":GOSUB 29000
+330 PRINT"{right*5}"+chr$(108)+"{cm p*14}{sh @}{cm p*15}{sh @}":GOSUB 29000
 350 POKEyw,2:POKEwy,0:PRINT"{white}{reverse on}la tua missione sara' difficile.{space*8}";
 360 PRINT"{reverse on}dovrai recuperare la spada fiammeggiante{down*2}":GOSUB30000:PRINT"{down*2}"
 370 PRINT"{down}{reverse on}io ti guidero'attraverso le mille diffi-colta' che dovrai superare.";
@@ -73,7 +73,7 @@
 562 GOTO30500
 1000 REM-tyro-
 1005 GOSUB30720
-1010 PRINTSPC(10)"{white}{reverse on}in viaggio verso tyro":pe=3:di=2
+1010 PRINTSPC(10)"{white}{reverse on}in viaggio verso tyro":pe=3:di=3
 1020 PRINT"{down}{black}sta andando tutto bene!non c'e' nessuno.":GOSUB29000:GOSUB30780
 1030 POKEyw,6:POKEwy,0:PRINT"{clear}"
 1040 PRINTSPC(17)"{reverse on}{white}{space*2}tyro{space*2}"
@@ -99,19 +99,21 @@
 2060 PRINT"2)un alchimista ne paghera' 100 a chi gli procurera'le radici dell'";
 2070 PRINT"albero della vita che cresce nella foresta dei trolls."
 2080 PRINT"3)il conte di yul cerca guerrieri per la vigilanza del suo castello."
-2090 PRINT"{black}{down}ora scegli o premi:4 per tornare a casa,5 per la situazione"
+2085 PRINT"4) in cambio di fortuna un guaritore ti aiutera'"
+2090 PRINT"{black}{down}ora scegli o premi:5 per tornare a casa,6 per la situazione"
 2093 INPUTq:PRINT"{clear}"
-2095 IFq=5THENGOSUB30170:GOTO2030
+2095 IFq=6THENGOSUB30170:GOTO2030
 2097 POKEyw,1:POKEwy,6:PRINTco$;",parti e buona fortuna!"
 3000 rem ONqGOTO3010,5000,8020,30500
-3001 ifq=5THENGOSUB30170:GOTO2030:rem situazione
-3002 ifq=4THENreturn:rem ritorno
+3001 ifq=6THENGOSUB30170:GOTO2030:rem situazione
+3002 ifq=5THENreturn:rem ritorno
 3003 ifq=2THENgosub5000:rem alchimista
 3004 ifq=3THENgosub8020:rem conte yul
 3005 ifq=1THENgosub3010:rem tiranno sauro
-3006 rem
-3008 goto 2030 : rem tyro missioni
-3009 rem
+3006 ifq=4THENprint"{clear}il guaritore effettua una preghiera di guarigione."
+3007 ifq=4THENmm=int(rnd(1)*5)+1:ft=ft-mm:print" - punti fortuna [";mm;"]{down}"
+3008 ifq=4THENve=0
+3009 goto 2030 : rem tyro missioni
 3010 REM -tirann-
 3015 rem
 3020 pe=6:di=4:GOSUB30780
@@ -575,6 +577,9 @@
 40030 fb=INT(fz/10)*3:PRINT"{black}attento ";co$;:PRINT"!"
 40035 PRINT"hai incontrato";
 40070 PRINT" un{.*21}":GOSUB29990:PRINT"{down}{.*8}{reverse on}{red}";nm$
+40075 rem
+40078 rem nm$="dragone":fz=120:cm=90:rem debug
+40079 rem
 40080 GOSUB60000:RETURN
 40100 DATAdinosauro,60,25,stregone,20,28,azteco,25,30,samurai,20,65
 40110 DATAgorilla,40,35,lottatore,28,50,gladiatore,45,50
@@ -585,7 +590,7 @@
 40160 DATAstrano skrull,25,35,ciclope,60,60,mostro alato,50,65
 40170 DATAgoblin,37,49,satiro,20,34,grifone,37,51
 40180 DATAtitano,70,70,serpente alato,50,35,gigante,65,35
-40190 DATAsauriano,39,37,minotauro,34,61,dragone,90,90
+40190 DATAsauriano,39,37,minotauro,34,61,dragone,120,90
 40200 DATApterodattilo,37,30,demonio,39,25,cannibale,47,32
 40210 DATAmammouth,60,41,ragno gigante,18,50,predone,23,34
 40220 DATAunicorno,22,17,zombi,37,20,orco,55,40
@@ -593,6 +598,49 @@
 40240 DATAtritone,22,38,enorme scorpione,27,45,diavolo,26,29
 40250 DATAiguana,18,25,cobra dorato,23,33,varano,28,18,anaconda,12,26
 40260 rem
+40270 rem 
+45000 rem attacco speciale
+45001 if(ve>0)thenprint"{green}perdi forza e abilita per il veleno ...{black}"
+45002 if(ve>0)then:fo=fo-ve:ab=ab-int(ve/2)
+45004 IFfo<1THEN60600:REM ............. VELENO
+45005 IFab<1THENprint"sei paralizzato ..."
+45006 if int(rnd(1)*3)<>2 THEN 45990
+45008 print"{down}"
+45010 rem ATTACCO SPECIALE
+45011 fori=1to1000:nexti 
+45015 rem
+45020 if(nm$="hobbit")thenprint"lo ";nm$;" indossa un anello, ora e' quasi invisibile"
+45025 if(nm$="hobbit")thencm=70:nm$="hobbit invisibile"
+45028 rem
+45030 if(nm$="gnomo")thenprint"lo ";nm$;" lancia un incantesimo di illusione":fz=40:cm=40
+45035 if(nm$="gnomo")thennm$="gnomo illusionista":goto45040
+45036 if(nm$="gnomo illusionista")thenprint"lo ";nm$;" lancia una illusione"
+45037 if(nm$="gnomo illusionista")thenprint"diventi te stesso tuo nemico" 
+45038 if(nm$="gnomo illusionista")thenfo=fo-5:ab=ab-3:print"danni auto inflitti"
+45039 rem
+45040 if(nm$="cavaliere nero")then print"{black}{reverse on}il ";nm$;"{down}attiva la sua aura spettrale{reverse off}"
+45045 if(nm$="cavaliere nero")then fz=fz+5:fo=fo-5:ab=ab-3:cm=cm+3
+45048 rem
+45050 if(nm$="mago")thenprint"il ";nm$;" lancia mani brucianti" :fo=fo-5*(int(rnd(1)*2)+1)
+45055 rem
+45060 if(nm$="folletto")thenprint"il " ;nm$;" diventa un gigante "
+45065 if(nm$="folletto")thennm$="folletto gigante":fz=50:cm=50
+45066 rem
+45067 vv=0
+45068 if(nm$="serpente alato")thenve=ve+int(rnd(1)*4)+1:nm$=nm$+" ":vv=1
+45070 if(nm$="enorme scorpione")thenve=ve+int(rnd(1)*1)+1:nm$=nm$+" ":vv=1
+45080 if(nm$="cobra dorato")thenve=ve+int(rnd(1)*2)+1:nm$=nm$+" ":vv=1
+45085 if(nm$="varano")thenve=ve+int(rnd(1)*3)+1:nm$=nm$+" ":vv=1
+45090 if(vv=1)thenprint"{green}il ";nm$;" ti ha inflitto un attacco velenoso.{black} "
+45095 vv=0
+45098 if(nm$="dragone" )thenprint"{reverse on}{red}ti attacca col suo respiro infuocato{reverse off}"
+45099 if((nm$="dragone")and(ad=1))thenprint"{reverse on}{yellow}...ma l'ammazza draaghi ti ha salvato{reverse off}"
+45100 if((nm$="dragone")and(ad=0))thenprint"... ti provoca danni consistenti"
+45102 if((nm$="dragone")and(ad=0))thenfo=int(fo/2):ab=int(ab/2)
+45105 rem
+45989 fori=1to1000:next
+45990 return
+46000 rem
 59000 REM torre magica
 59005 REM
 59010 PRINT"{clear}":POKEyw,4:PRINTSPC(10)"{white}{reverse on}verso la torre magica":GOSUB27050
@@ -633,17 +681,23 @@
 60010 PRINT"{down}{green}la sua forza e' di{.*5}{blue}";:GOSUB29990:PRINTfz;"{green}"
 60020 PRINT"e ha{.*3}{blue}";:GOSUB29990
 60030 PRINTcm;"{green}{right}in abilita' di combattimento":GOTO60100
-60090 GOTO60150
-60091 if(nm$="dragone")and(xx=1)thennm$="fantasma dragone":cm=0;fz=0;
-60092 if(nm$="dragone")THENPRINT"{down}{red} L'avversario più forte !"
-60093 if(nm$="dragone")andad=0THENPRINT"e non hai l'ammazza draghi!'"
-60094 if(nm$="dragone")andad=1THENPRINT"ma hai con te l'ammazza draghi!'":fo=90:ab=75
+60090 rem
+60091 rem 
+60092 rem
+60093 rem
+60094 rem
 60095 IF(cm>40)and(cm<60)>=10THENPRINT"{down}{red}è' molto abile nel combattimento'"
 60098 IF(cm>=60)>=10THENPRINT"{down}{red}{reverse on}è un grande guerriero stai attento{reverse off}"
 60100 IF(fz-fo)>=10THENPRINT"{down}{red}e' un avversario duro da uccidere!"
 60105 IF(cm-ab)>=0THENPRINT"{down}{blue}attento!e' un ottimo combattente!"
 60110 IF(fz-fo)=<10AND(cm-ab)<15THENPRINT"{down}{yellow}e' uno scontro alla tua portata'!"
 60115 if(fo<15)THENprint"{down}{reverse on}{red} SEI MOLTO DEBOLE {reverse off}{red}"
+60118 rem
+60120 if(nm$="dragone")and(xx=1)thennm$="fantasma dragone":cm=0;fz=0;
+60121 if(nm$="dragone")THENPRINT"{down}{red}L'avversario piu' forte !"
+60122 if(nm$="dragone")andad=0THENPRINT"e non hai l'ammazza draghi!'"
+60123 if(nm$="dragone")andad=1THENPRINT"ma hai con te l'ammazza draghi!'":fo=90:ab=75
+60124 rem
 60125 zf=fz:za=cm:rem salva punteggi iniziali
 60150 GOSUB29000:POKE53280,5
 60160 POKEyw,1:IFno=1THEN60200
@@ -693,6 +747,9 @@
 60272 IFfo<19THENPRINT"{down}{reverse on}{black}la vista ti si annebbia!"
 60274 IFfo<9THENPRINT"{down}{reverse on}{yellow}stai per crollare!sei troppo debole!"
 60280 IFno=1THENGOSUB29000:GOTO60200
+60288 rem
+60292 gosub 45000 : rem ATTACCO SPECIALE
+60294 rem
 60295 PRINTSPC(6)"{down*3}vuoi continuare? (s/n)"
 60296 GETs$:IFs$=""THEN60296
 60297 IFs$="n"THEN60400

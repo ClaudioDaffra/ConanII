@@ -135,3 +135,13 @@ modifiche versione 1.0
 30653 ifn=5THEN15000:rem torre magica
 30654 ifn=6THEN30900:rem mappa cimmeria
 30655 GOTO 30500 : rem ONnGOTO1,1000,20000,10000,15000
+
+20) migliorata visualizzazine iniziale
+
+21) aggiunti attacchi speciali
+
+22) aggiunto gestione dragone
+
+23) bug fix lettere accentate
+
+24) introduzione veleno e guaritore
