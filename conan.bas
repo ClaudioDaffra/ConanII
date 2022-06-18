@@ -582,22 +582,22 @@
 40078 rem nm$="dragone":fz=120:cm=90:rem debug
 40079 rem
 40080 GOSUB60000:RETURN
-40100 DATAdinosauro,60,25,stregone,20,28,azteco,25,30,samurai,20,65
-40110 DATAgorilla,40,35,lottatore,28,50,gladiatore,45,50
-40120 DATAippogrifo,12,31,vichingo,33,39,mago,10,25
-40130 DATAhobbit,5,9,guerriero,27,48,soldato,28,34
-40140 DATAcentauro,25,41,gnomo,9,25,cavaliere nero,35,61
-40150 DATAfolletto,13,25,barbaro,41,48,mercenario,20,34
-40160 DATAstrano skrull,25,35,ciclope,60,60,mostro alato,50,65
-40170 DATAgoblin,37,49,satiro,20,34,grifone,37,51
-40180 DATAtitano,70,70,serpente alato,50,35,gigante,65,35
+40100 DATAdinosauro,60,20,stregone,20,23,azteco,25,25,samurai,20,60
+40110 DATAgorilla,40,30,lottatore,28,45,gladiatore,45,45
+40120 DATAippogrifo,12,26,vichingo,33,35,mago,10,20
+40130 DATAhobbit,5,9,guerriero,27,43,soldato,28,29
+40140 DATAcentauro,25,35,gnomo,9,20,cavaliere nero,35,56
+40150 DATAfolletto,13,20,barbaro,41,43,mercenario,20,29
+40160 DATAstrano skrull,25,30,ciclope,60,55,mostro alato,50,60
+40170 DATAgoblin,37,45,satiro,20,29,grifone,37,46
+40180 DATAtitano,70,70,serpente alato,40,35,gigante,65,30
 40190 DATAsauriano,39,37,minotauro,34,61,dragone,120,90
-40200 DATApterodattilo,37,30,demonio,39,25,cannibale,47,32
-40210 DATAmammouth,60,41,ragno gigante,18,50,predone,23,34
-40220 DATAunicorno,22,17,zombi,37,20,orco,55,40
-40230 DATAuomo-lupo,28,39,indemoniato,13,30,kraken,65,65
-40240 DATAtritone,22,38,enorme scorpione,27,45,diavolo,26,29
-40250 DATAiguana,18,25,cobra dorato,23,33,varano,28,18,anaconda,12,26
+40200 DATApterodattilo,37,25,demonio,39,20,cannibale,47,25
+40210 DATAmammouth,60,27,ragno gigante,18,34,predone,23,29
+40220 DATAunicorno,22,17,zombi,37,15,orco,55,35
+40230 DATAuomo-lupo,28,34,indemoniato,13,25,kraken,65,59
+40240 DATAtritone,22,383,enorme scorpione,27,40,diavolo,26,24
+40250 DATAiguana,18,20,cobra dorato,23,28,varano,28,13,anaconda,12,21
 40260 rem
 40270 rem 
 45000 rem attacco speciale
