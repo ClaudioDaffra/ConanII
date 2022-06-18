@@ -303,7 +303,7 @@
 11425 :
 11430 INPUTx:IFx>4THENGOSUB30170
 11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera è custodita da un drago"
-11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno ...'":ze=0
+11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno e l'oscurita'...'":ze=0
 11433 IFx=0THEN11510
 11435 IFx>4THENPRINT"{clear}":GOTO11390
 11440 IFx=4THEN30500
