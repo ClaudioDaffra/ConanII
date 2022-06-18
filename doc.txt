@@ -145,3 +145,10 @@ modifiche versione 1.0
 23) bug fix lettere accentate
 
 24) introduzione veleno e guaritore
+
+25) aumentata fortuna nei ritrovamenti
+
+26) trovare più soldi
+
+27) missioni più ricompense
+

@@ -170,7 +170,7 @@
 8080 PRINTSPC(15)"{reverse on}{green}{sh pound}{space*9}{cm asterisk}":PRINTSPC(14)"{reverse on}{sh pound}{space*11}{cm asterisk}"
 8090 FORt=1TO120:PRINT"{reverse on} ";:NEXT
 9000 PRINT"{reverse off}{white}":GOSUB29000
-9030 POKEyw,6:t=15+INT(RND(1)*16):ze=ze+t
+9030 POKEyw,6:t=15+INT(RND(1)*64):ze=ze+t
 9040 PRINT"{white}il conte di yul ti offre{yellow} ";t;"{white}zecchini"
 9045 PRINT"per tre giorni di servizio"
 9050 PRINT"{cyan}";co$;"{white} dovrai sorvegliare i dintorni del castello.":GOSUB29000
@@ -300,9 +300,10 @@
 11400 PRINT"{down}2)per la seconda voglio 15 punti fortuna"
 11410 PRINT"3)per la terza voglio ben 10 punti di abilita'"
 11420 PRINT"{yellow}{down*2}scegli o premi: 4 per tornare a casa,5 per la situazione"
+11425 :
 11430 INPUTx:IFx>4THENGOSUB30170
 11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera è custodita da un drago"
-11432 IFx=0THENPRINTze=0
+11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno ...'":ze=0
 11433 IFx=0THEN11510
 11435 IFx>4THENPRINT"{clear}":GOTO11390
 11440 IFx=4THEN30500
@@ -445,8 +446,8 @@
 29560 PRINT"{clear}{blue}nella terra di cimeria vale la legge del piu' forte!"
 29570 PRINT"a colui che vince spettano gli oggetti{space*2}del perdente!"
 29580 PRINTco$;",frugando trovi{.*14}{down}":GOSUB29990:PRINT"{green}{.*4}{reverse on}";
-29590 s=INT(RND(1)*(200+ft)):IFs>ftTHENPRINT"niente!":GOSUB29000:RETURN
-29600 w=INT(RND(1)*15)+1:t=INT(RND(1)*12)+1
+29590 s=INT(RND(1)*(150+ft)):IFs>ftTHENPRINT"niente!":GOSUB29000:RETURN
+29600 w=INT(RND(1)*15)+1:t=INT(RND(1)*24)+1
 29610 IFw=1THENPRINT"uno scudo per aumentare la tua forza":fo=fo+10
 29620 IFw=2THENPRINT"una pozione che dona nuova forza":fo=fo+15
 29630 IFw=3THENPRINT"una spada per aumentare l'abilita'":ab=ab+10
@@ -487,9 +488,9 @@
 30208 PRINT"{right*6} danno   : ";dn-1
 30209 REM
 30210 PRINT"{down*3}e possiedi{.*3}{down}{yellow}":j=0
-30220 IFas=1THENPRINT"un'ascia incantata;";:j=1
+30220 IFas=1THENPRINT"un'ascia incantata;";:j=1:rem
 30230 IFmz=1THENPRINT"una mazza ferrata;";:j=1
-30240 IFsp=1THENPRINT"una spada d'argento;";:j=1
+30240 IFsp=1THENPRINT"una spada d'argento;";:j=1:rem
 30250 IFpl=1THENPRINT"una spada di platino;";:j=1
 30260 IFsc=1THENPRINT"uno scudo d'oro;";:j=1
 30270 IFad=1THENPRINT"un'ammazza draghi';";:j=1
@@ -618,7 +619,9 @@
 45037 if(nm$="gnomo illusionista")thenprint"diventi te stesso tuo nemico" 
 45038 if(nm$="gnomo illusionista")thenfo=fo-5:ab=ab-3:print"danni auto inflitti"
 45039 rem
-45040 if(nm$="cavaliere nero")then print"{black}{reverse on}il ";nm$;"{down}attiva la sua aura spettrale{reverse off}"
+45040 if(nm$="cavaliere nero")then print"{black}{reverse on}il ";nm$:print
+45042 if(nm$="cavaliere nero")then print"attiva la sua aura spettrale{reverse off}"
+45044 if(sc=1)then print"... ma tu hai lo scudo d'oro e non ha effetto'":goto45055
 45045 if(nm$="cavaliere nero")then fz=fz+5:fo=fo-5:ab=ab-3:cm=cm+3
 45048 rem
 45050 if(nm$="mago")thenprint"il ";nm$;" lancia mani brucianti" :fo=fo-5*(int(rnd(1)*2)+1)
@@ -632,6 +635,7 @@
 45080 if(nm$="cobra dorato")thenve=ve+int(rnd(1)*2)+1:nm$=nm$+" ":vv=1
 45085 if(nm$="varano")thenve=ve+int(rnd(1)*3)+1:nm$=nm$+" ":vv=1
 45090 if(vv=1)thenprint"{green}il ";nm$;" ti ha inflitto un attacco velenoso.{black} "
+45092 if(vv=1)and(sc=1)thenprint" ... ma lo scudo d'oro ti ha salvato'":ve=0
 45095 vv=0
 45098 if(nm$="dragone" )thenprint"{reverse on}{red}ti attacca col suo respiro infuocato{reverse off}"
 45099 if((nm$="dragone")and(ad=1))thenprint"{reverse on}{yellow}...ma l'ammazza draaghi ti ha salvato{reverse off}"
