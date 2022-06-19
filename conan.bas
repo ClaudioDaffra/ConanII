@@ -621,7 +621,8 @@
 45039 rem
 45040 if(nm$="cavaliere nero")then print"{black}{reverse on}il ";nm$:print
 45042 if(nm$="cavaliere nero")then print"attiva la sua aura spettrale{reverse off}"
-45044 if(sc=1)then print"... ma tu hai lo scudo d'oro e non ha effetto'":goto45055
+45043 if(nm$="cavaliere nero")and(sc=1)thenprint"lo scudo d'orato ti protegge'"
+45044 if(nm$="cavaliere nero")and(sc=1)then45050
 45045 if(nm$="cavaliere nero")then fz=fz+5:fo=fo-5:ab=ab-3:cm=cm+3
 45048 rem
 45050 if(nm$="mago")thenprint"il ";nm$;" lancia mani brucianti" :fo=fo-5*(int(rnd(1)*2)+1)
