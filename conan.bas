@@ -304,7 +304,7 @@
 11430 INPUTx:IFx>4THENGOSUB30170
 11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera e' custodita da un drago"
 11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno e l'oscurita'...'":ze=0
-11433 IFx=0THEN11510
+11433 rem
 11435 IFx>4THENPRINT"{clear}":GOTO11390
 11440 IFx=4THEN30500
 11445 IFx=1THENfo=fo-20
@@ -596,7 +596,7 @@
 40210 DATAmammouth,60,27,ragno gigante,18,34,predone,23,29
 40220 DATAunicorno,22,17,zombi,37,15,orco,55,35
 40230 DATAuomo-lupo,28,34,indemoniato,13,25,kraken,65,59
-40240 DATAtritone,22,383,enorme scorpione,27,40,diavolo,26,24
+40240 DATAtritone,22,38,enorme scorpione,27,40,diavolo,26,24
 40250 DATAiguana,18,20,cobra dorato,23,28,varano,28,13,anaconda,12,21
 40260 rem
 40270 rem 
@@ -697,7 +697,7 @@
 60110 IF(fz-fo)=<10AND(cm-ab)<15THENPRINT"{down}{yellow}e' uno scontro alla tua portata'!"
 60115 if(fo<15)THENprint"{down}{reverse on}{red} SEI MOLTO DEBOLE {reverse off}{red}"
 60118 rem
-60120 if(nm$="dragone")and(xx=1)thennm$="fantasma dragone":cm=0;fz=0;
+60120 if(nm$="dragone")and(xx=1)thennm$="fantasma dragone":cm=0:fz=0:
 60121 if(nm$="dragone")THENPRINT"{down}{red}L'avversario piu' forte !"
 60122 if(nm$="dragone")andad=0THENPRINT"e non hai l'ammazza draghi!'"
 60123 if(nm$="dragone")andad=1THENPRINT"ma hai con te l'ammazza draghi!'":fo=90:ab=75
