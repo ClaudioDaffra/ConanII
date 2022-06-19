@@ -783,8 +783,10 @@
 60622 a2=(INT(zf/10)*2)+1:fo=fo+a2
 60625 rem print "XXX ";za;" YYY ";zf;" --- ";a1;" --- ";a2;"."
 60630 PRINT"{down*2}ottieni";a1;"in abilita' e";a2;"in forza{black}"
-60640 if(nm$="dragone")THENprint"{red}{reverse on}Il dragone si dissolve "
-60645 if(nm$="dragone")THENprint"{down}lasciando sulla terra una lettera"
-60648 if(nm$="dragone")THENprint" [ ";no$(3);" ]. {reverse off}"
-60649 if(nm$="dragone")THENXX=1:ad=0
+60635 rem nm$="dragone":ad=1:poke53181,1 : DEBUG
+60640 if(nm$="dragone")THENprint"{clear}{red}{reverse on}Il dragone si dissolve "
+60645 if(nm$="dragone")THENprint"{down*2}lasciando sulla terra una lettera [ ";no$(3);" ].""
+60647 if(nm$="dragone")andad=1THENPRINT"{down*2}e con esso si dissolve l'ammazzadraghi !"
+60648 if(nm$="dragone")THENPRINT"{down*2}ottieni";a1;"in abilita' e";a2;"in forza{black}"
+60649 if(nm$="dragone")THENXX=1:ad=0:print"{reverse off}"
 60650 GOSUB27000:GOSUB29000:GOSUB29550:RETURN
