@@ -11,7 +11,7 @@
 45 rem
 50 DIMno$(4)
 60 fo=50:ze=30:ab=45:ft=28:as=0:co$="conan":mz=0:no=0:sp=0:sc=0:pl=0:am=0
-62 at=1:df=1:dn=1:xx=0:ve=0:rem bonus attacco difesa e danno
+62 at=1:df=1:dn=1:xx=0:ve=0:ad=0:rem bonus attacco difesa e danno
 65 rem
 70 wy=53280:yw=53281
 90 REM -titolo-
@@ -300,7 +300,7 @@
 11400 PRINT"{down}2)per la seconda voglio 15 punti fortuna"
 11410 PRINT"3)per la terza voglio ben 10 punti di abilita'"
 11420 PRINT"{yellow}{down*2}scegli o premi: 4 per tornare a casa,5 per la situazione"
-11425 :
+11425 rem
 11430 INPUTx:IFx>4THENGOSUB30170
 11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera e' custodita da un drago"
 11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno e l'oscurita'...'":ze=0
