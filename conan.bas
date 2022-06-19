@@ -302,7 +302,7 @@
 11420 PRINT"{yellow}{down*2}scegli o premi: 4 per tornare a casa,5 per la situazione"
 11425 :
 11430 INPUTx:IFx>4THENGOSUB30170
-11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera è custodita da un drago"
+11431 IFx=0THENPRINT"{clear}{yellow}{down}l'ultima lettera e' custodita da un drago"
 11432 IFx=0THENPRINT "l'oro ha la meglio contro il veleno e l'oscurita'...'":ze=0
 11433 IFx=0THEN11510
 11435 IFx>4THENPRINT"{clear}":GOTO11390
@@ -690,8 +690,8 @@
 60092 rem
 60093 rem
 60094 rem
-60095 IF(cm>40)and(cm<60)>=10THENPRINT"{down}{red}è' molto abile nel combattimento'"
-60098 IF(cm>=60)>=10THENPRINT"{down}{red}{reverse on}è un grande guerriero stai attento{reverse off}"
+60095 IF(cm>40)and(cm<60)>=10THENPRINT"{down}{red}e' molto abile nel combattimento'"
+60098 IF(cm>=60)>=10THENPRINT"{down}{red}{reverse on}e' un grande guerriero stai attento{reverse off}"
 60100 IF(fz-fo)>=10THENPRINT"{down}{red}e' un avversario duro da uccidere!"
 60105 IF(cm-ab)>=0THENPRINT"{down}{blue}attento!e' un ottimo combattente!"
 60110 IF(fz-fo)=<10AND(cm-ab)<15THENPRINT"{down}{yellow}e' uno scontro alla tua portata'!"
