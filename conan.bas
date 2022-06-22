@@ -10,8 +10,8 @@
 40 REM -variabili-
 45 rem
 50 DIMno$(4)
-60 fo=50:ze=30:ab=45:ft=28:as=0:co$="conan":mz=0:no=0:sp=0:sc=0:pl=0:am=0
-62 at=1:df=1:dn=1:xx=0:ve=0:ad=0:rem bonus attacco difesa e danno
+60 fo=90:ze=3000:ab=75:ft=200:as=0:co$="conan":mz=1:no=0:sp=1:sc=1:pl=1:am=1
+62 at=10:df=6:dn=3:xx=0:ve=0:ad=1:rem bonus attacco difesa e danno
 65 rem
 70 wy=53280:yw=53281
 90 REM -titolo-
@@ -318,7 +318,8 @@
 11485 IFx=3THENab=ab-10
 11490 IFx=3ANDab<0THEN11510
 11495 IFx=3THENPRINT"{clear}quando vorrai conquistare l'ambita arma";
-11500 IFx=3THENPRINT" una porta dovrai aprir.scegli il numero:{black}{down}";SPC(18);xy
+11500 IFx=3THENPRINT" una porta dovrai aprir. scegli il numero:{black}{down}"
+11502 IFx=3THENPRINT"{down} ... {red}[";xy;"]{yellow}"
 11505 GOTO11520
 11510 PRINT"{clear}{white}hai tentato di imbrogliarmi!percio'{.*3}":GOSUB29000:GOTO29500
 11520 GOSUB29000:GOTO30500
@@ -558,13 +559,13 @@
 30910 PRINT"{clear}":POKEyw,13:POKEwy,0
 30915 PRINTSPC(6)"{white}{reverse on}ecco la terra di cimeria:"
 30920 PRINTSPC(4)"{reverse on}{down}{white}{sh pound}{cm asterisk}{left*2}{down}{space*2}{cm asterisk}{down}{left*4}{sh pound}{space*3}{cm asterisk}{down*2}{left*7}{gray}montagna{down}{left*8}luminosa"
-30923 PRINT"{down}{reverse off}{blue}{right*2}UI{down}{left*3}UKJI{down}{left*4}JI{right}JI{down}{left*5}UK{right*2}JI{down}{left*6}B{right*4}JI"
-30925 PRINT"{right}JI{right*3}UK{down}{left*6}JI{right}UK{down}{left*4}JCK{down}{left*5}{reverse on}lago di{down}{left*7}{space*2}oz{space*3}"
+30923 PRINT"{down}{reverse off}{blue}{right*2}{Q*2}{down}{left*3}{Q*4}{down}{left*4}{Q*2}{right}{Q*2}{down}{left*5}{Q*2}{right*2}{Q*2}{down}{left*6}{Q}{right*4}{Q*2}"
+30925 PRINT"{right}{Q*2}{right*3}{Q*2}{down}{left*6}{Q*2}{right}{Q*2}{down}{left*4}{Q*3}{down}{left*5}{reverse on}lago di{down}{left*7}{space*2}oz{space*3}"
 30927 PRINT"{home}";SPC(20);"{down*3}{orange}{reverse on}{cm j}{black}{cm u}{orange}{cm l}{down}{left*5}{brown}{space*5}{down}{left*4}{down}{left}{black}tyro"
 30930 PRINTSPC(32)"{up*5}{reverse on}{black}arya{down*2}{left*2}{brown}{down}{black}{left*3}{brown}{down}{left*4}{black}{sh pound}{orange}{space*5}{black}{cm asterisk}"
-30932 PRINTSPC(15)"{green}{down}{Q*8}{right*6}{up}{right*4}{yellow}UCIUCI{down}{left*7}UK{right}JKUK";
-30935 PRINT"{down}{left*7}B{down}{left}B{right*5}B{up}{left*2}JI{down*2}{left*7}JI{down}{left}B{right*3}JI{up}{left*2}UK";
-30936 PRINT"{down}{left*6}JI{down}{left}JK{up}{left}UCCK{down*2}{left*7}{blue}deserto"
+30932 PRINTSPC(15)"{green}{down}{Q*8}{right*6}{up}{right*4}{yellow}{Q*6}{down}{left*7}{Q*2}{right}{Q*4}";
+30935 PRINT"{down}{left*7}{Q}{down}{left}B{right*5}B{up}{left*2}{Q*2}{down*2}{left*7}{Q*2}{down}{left}{Q}{right*3}{Q*2}{up}{left*2}{Q*2}";
+30936 PRINT"{down}{left*6}{Q*2}{down}{left}{Q*2}{up}{left}{Q*4}{down*2}{left*7}{blue}deserto"
 30937 PRINT"{home}{down*9}";SPC(13);"{green}{Q*12}":PRINTSPC(14)"{Q*13}"
 30940 PRINTSPC(16)"{Q*9}{down}{left*6}{Q*5}{down}{left*12}{reverse on}foresta dei trolls"
 30945 PRINTSPC(14)"{down*2}{cyan}{cm f*3}{down}{left*3}{reverse on}{space*2}{down}{left*2}{space*2}{down}{left*2}{space*2}{reverse off}{cm k}{up}{left}{cm k}{up}{left}{cm k}{white}torre {down}{left*6}magica";
@@ -636,7 +637,7 @@
 45080 if(nm$="cobra dorato")thenve=ve+int(rnd(1)*2)+1:nm$=nm$+" ":vv=1
 45085 if(nm$="varano")thenve=ve+int(rnd(1)*3)+1:nm$=nm$+" ":vv=1
 45090 if(vv=1)thenprint"{green}il ";nm$;" ti ha inflitto un attacco velenoso.{black} "
-45092 if(vv=1)and(sc=1)thenprint" ... ma lo scudo d'oro ti ha salvato'":ve=0
+45092 if(vv=1)and(sc=1)thenprint" ... ma lo scudo d'oro ti ha salvato!":ve=0
 45095 vv=0
 45098 if(nm$="dragone" )thenprint"{reverse on}{red}ti attacca col suo respiro infuocato{reverse off}"
 45099 if((nm$="dragone")and(ad=1))thenprint"{reverse on}{yellow}...ma l'ammazza draaghi ti ha salvato{reverse off}"
