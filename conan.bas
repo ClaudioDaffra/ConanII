@@ -3,15 +3,16 @@
 20 REM * conan II
 25 REM *
 30 REM **********************
-35 REM
-36 REM modfied     Claudio Daffra          2022
-38 REM typed in by Roberto, Eregil e tsm - 2009
+32 REM
+35 REM 1985 by luke
+36 REM 2009 typed in by Roberto, Eregil e tsm
+38 REM 2022 remake clod     
 39 rem
 40 REM -variabili-
 45 rem
 50 DIMno$(4)
-60 fo=90:ze=3000:ab=75:ft=200:as=0:co$="conan":mz=1:no=0:sp=1:sc=1:pl=1:am=1
-62 at=10:df=6:dn=3:xx=0:ve=0:ad=1:rem bonus attacco difesa e danno
+60 fo=50:ze=30:ab=45:ft=28:as=0:co$="conan":mz=0:no=0:sp=0:sc=0:pl=0:am=0
+62 at=1:df=1:dn=1:xx=0:ve=0:ad=0:rem bonus attacco difesa e danno
 65 rem
 70 wy=53280:yw=53281
 90 REM -titolo-
