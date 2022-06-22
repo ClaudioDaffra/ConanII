@@ -230,13 +230,13 @@
 10720 PRINT"{white}{reverse on}il laboratorio dell'alchimista"
 10730 PRINT"{black}{down}ora scegli cosa comprare{.*9}"
 10735 PRINT"{yellow}{down*2}0)un'ammazza draghi(500)":PRINT"{reverse on}25 punti d'abilita'"
-10740 PRINT"una spada d'argento(300 zecchini)":PRINT"{reverse on}17 punti d'abilita'"
+10740 PRINT"1)una spada d'argento(300 zecchini)":PRINT"{reverse on}17 punti d'abilita'"
 10750 PRINT"2)uno scudo d'oro(200 zecchini)":PRINT"{reverse on}10 punti d'abilita'"
 10760 PRINT"3)un'ascia incantata(250 zecchini)":PRINT"{reverse on}15 punti d'abilita'"
 10770 PRINT"4)una mazza ferrata(150 zecchini)":PRINT"{reverse on}7 punti d'abilita'"
 10780 PRINT"5)una spada di platino(350 zecchini)":PRINT"{reverse on}20 punti d'abilita'"
 10790 PRINT"6)grazie torno fra poco!"
-10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>5THEN10720
+10800 PRINT"{white}{down}scegli{.*6}":x=0:INPUT x:IFx>6THEN10720
 10805 IFx=0THENs=ze-500:a=25
 10810 IFx=1THENs=ze-300:a=17
 10820 IFx=2THENs=ze-200:a=10
@@ -268,7 +268,7 @@
 11090 IFs<0THENGOSUB11120:GOTO10510
 11100 GOSUB11130:ze=s:ft=ft+w:GOTO10510
 11120 PRINT"{clear}non hai abbastanza soldi":GOSUB29000:RETURN
-11130 PRINT"{clear}bene,hai fatto un buon acquisto!":GOSUB29000:RETURN
+11130 if x<>6 then PRINT"{clear}bene,hai fatto un buon acquisto!":GOSUB29000:RETURN
 11140 rem
 11150 REM -unno-
 11155 rem
@@ -487,7 +487,7 @@
 30207 PRINT"{right*6} difesa  : ";df-1
 30208 PRINT"{right*6} danno   : ";dn-1
 30209 REM
-30210 PRINT"{down*3}e possiedi{.*3}{down}{yellow}":j=0
+30210 PRINT"{down}e possiedi{.*3}{down}{yellow}":j=0
 30220 IFas=1THENPRINT"un'ascia incantata;";:j=1:rem
 30230 IFmz=1THENPRINT"una mazza ferrata;";:j=1
 30240 IFsp=1THENPRINT"una spada d'argento;";:j=1:rem
