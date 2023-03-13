@@ -6,7 +6,6 @@
 bin/*
 *.exe
 x
-*.prg
 *.tmp
 *.dbg
 cdBasicLoader.bas
