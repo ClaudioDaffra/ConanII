@@ -24,7 +24,7 @@ cdBasicLoader.bas
 *.gch
 
 # commodore 64 cbm project studio
-*.prg
+
 bak/*
 *.tmp
 
